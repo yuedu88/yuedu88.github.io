@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClickFuture App Studio - Practical Tools, Made with Care</title>
+  <style>
+    :root {
+      --primary-color: #007AFF;
+      --bg-color: #F5F5F7;
+      --card-bg: #FFFFFF;
+      --text-main: #1D1D1F;
+      --text-secondary: #86868B;
+      --radius-l: 20px;
+      --radius-m: 12px;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo span {
+      background: linear-gradient(135deg, #007AFF, #00C6FF);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .main-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      padding-bottom: 80px;
+    }
+
+    .category-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .tab-button {
+      padding: 12px 30px;
+      border: 2px solid #E5E5EA;
+      background-color: white;
+      color: var(--text-secondary);
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .tab-button:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .tab-button.active {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+      box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+    }
+
+    .category-content {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .category-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .category-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .category-header h2 {
+      font-size: 2rem;
+      margin: 0 0 10px 0;
+      font-weight: 700;
+    }
+
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .app-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .app-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-l);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.02);
+      min-height: 500px;
+    }
+
+    .app-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .app-header {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .app-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 18px;
+      background-color: #f0f0f0;
+      object-fit: cover;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .app-info {
+      margin-left: 18px;
+      flex: 1;
+    }
+
+    .app-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0 0 6px 0;
+      color: var(--text-main);
+    }
+
+    .app-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .app-desc {
+      font-size: 0.95rem;
+      color: #555;
+      flex: 1;
+      margin-bottom: 20px;
+      cursor: pointer;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      line-height: 1.7;
+    }
+
+    .app-desc-hint {
+      font-size: 0.8rem;
+      color: var(--primary-color);
+      margin-top: 8px;
+      font-weight: 500;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: var(--radius-l);
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 30px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #f0f0f0;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      background: #e0e0e0;
+      color: #333;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 0 20px 0;
+      color: var(--text-main);
+    }
+
+    .modal-desc {
+      line-height: 1.8;
+      color: #555;
+      white-space: pre-wrap;
+    }
+
+    .app-screenshots {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .screenshot {
+      width: 100%;
+      height: 280px;
+      border-radius: 12px;
+      background-color: #eee;
+      object-fit: contain;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .screenshot:hover {
+      transform: scale(1.02);
+    }
+
+    .app-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border-radius: var(--radius-m);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #0066d6;
+    }
+
+    .footer {
+      background-color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .copyright {
+      color: #999;
+      font-size: 0.8rem;
+    }
+
+    .lang-select {
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      border: 2px solid #E5E5EA;
+      border-radius: 20px;
+      background-color: white;
+      color: var(--text-secondary);
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .lang-select:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <span>ClickFuture</span> | App Studio
+      </a>
+      <nav class="nav-links">
+        <select id="lang-select" class="lang-select" onchange="changeLanguage(this.value)">
+          <option value="en">English</option>
+          <option value="cn">中文</option>
+        </select>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h1 id="hero-title">Creating Better Apps</h1>
+    <p id="hero-desc">Explore our carefully crafted practical tools, from document processing to visual creation, empowering every detail of your life.</p>
+  </div>
+
+  <div class="main-container">
+    <div class="category-tabs" id="category-tabs">
+    </div>
+
+    <div id="category-container">
+    </div>
+  </div>
+
+  <footer id="contact" class="footer">
+    <div class="footer-links">
+      <a href="https://docs.qq.com/doc/DREt1SXJkbG9JYUFT" target="_blank">Privacy Policy</a>
+      <a href="https://docs.qq.com/doc/DREdKR2ZwYUJaa1hr" target="_blank">Terms of Use</a>
+      <a href="mailto:hxx_shdt@126.com">Contact Support</a>
+    </div>
+    <div class="copyright">
+      &copy; 2024 ClickFuture Studio. All rights reserved. <br>
+      ICP License: 沪ICP备2024069469号-5
+    </div>
+  </footer>
+
+  <div id="desc-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-desc" id="modal-desc"></div>
+    </div>
+  </div>
+
+  <script>
+    const configData = {
+      "book_reader": {
+        "en": "Reading World",
+        "cn": "阅读成长"
+      },
+      "office_tool": {
+        "en": "Office Tool",
+        "cn": "办公效率"
+      },
+      "audio_creator": {
+        "en": "Audio and Video",
+        "cn": "影像创作"
+      }
+    };
+
+    const appsData = {
+      "office_tool": [],
+      "book_reader": [
+        {
+          "name": "insightreader",
+          "title_en": "Insight Reader",
+          "title_cn": "Insight Reader",
+          "desc_en": "Discover Knowledge, Capture Thoughts - Your Intelligent Reading Companion. Insight Reader is an e-book reader designed for avid readers and learners. We focus on delivering a clean reading experience and powerful note-taking tools, helping you efficiently capture insights and organize your thoughts.",
+          "desc_cn": "发现知识，记录思考 - 你的智能阅读伴侣。Insight Reader 是一款专为爱好阅读与学习的用户设计的电子书阅读器。我们专注于提供纯净的阅读体验和强大的笔记功能，帮助你在海量知识中高效捕捉灵感、整理思考。",
+          "link": "https://apps.apple.com/us/app/insight-reader/id6756795788"
+        },
+        {
+          "name": "megareader",
+          "title_en": "Mega Reader",
+          "title_cn": "Mega Reader",
+          "desc_en": "A dedicated e-book reader designed for users who seek a pure reading experience. Supports EPUB, TXT, and PDF formats with iCloud sync for seamless cross-device reading.",
+          "desc_cn": "一款专为追求纯粹阅读体验的用户设计的电子书阅读器。支持EPUB、TXT和PDF格式，并通过iCloud同步实现跨设备无缝阅读。",
+          "link": "#"
+        }
+      ],
+      "audio_creator": []
+    };
+
+    let currentLang = 'en';
+    let currentCategory = 'book_reader';
+
+    function renderCategoryTabs() {
+      const tabsContainer = document.getElementById('category-tabs');
+      const categoryKeys = Object.keys(configData);
+      
+      const tabsHTML = categoryKeys.map(function(key) {
+        const isActive = key === currentCategory ? 'active' : '';
+        return '<button class="tab-button ' + isActive + '" onclick="switchCategory(\'' + key + '\')">' + configData[key][currentLang] + '</button>';
+      }).join('');
+      
+      tabsContainer.innerHTML = tabsHTML;
+    }
+
+    function createAppCard(app) {
+      const title = currentLang === 'en' ? app.title_en : app.title_cn;
+      const desc = currentLang === 'en' ? app.desc_en : app.desc_cn;
+      const hintText = currentLang === 'en' ? 'Click to read more' : '点击查看详情';
+      
+      const images = [1, 2].map(function(i) {
+        return '<img src="app/' + currentCategory + '/' + app.name + '/' + currentLang + '/imgage/AppStore' + i + '.png" class="screenshot" alt="Preview ' + i + '" onerror="this.style.display=\'none\'">';
+      }).join('');
+
+      const descLines = desc.split('. ').filter(function(line) { return line.trim(); });
+      const shortDesc = descLines.slice(0, 3).join('. ') + '.';
+      const fullDesc = desc;
+
+      return '<div class="app-card">' +
+        '<div class="app-header">' +
+        '<img src="app/' + currentCategory + '/' + app.name + '/' + currentLang + '/imgage/AppStore1.png" alt="Icon" class="app-icon" onerror="this.src=\'https://placehold.co/72/007AFF/ffffff?text=' + app.name.charAt(0).toUpperCase() + '\'">' +
+        '<div class="app-info">' +
+        '<div class="app-title">' + title + '</div>' +
+        '<div class="app-subtitle">Practical Tool</div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="app-desc" id="desc-' + app.name + '">' +
+        shortDesc +
+        '<div class="app-desc-hint" onclick="showFullDesc(\'' + title.replace(/'/g, "\\'") + '\', \'' + fullDesc.replace(/'/g, "\\'") + '\')" id="hint-' + app.name + '">' + hintText + '</div>' +
+        '</div>' +
+        '<div class="app-screenshots">' +
+        images +
+        '</div>' +
+        '<div class="app-actions">' +
+        '<a href="' + app.link + '" target="_blank" class="btn btn-primary">Download on App Store</a>' +
+        '</div>' +
+        '</div>';
+    }
+
+    function renderCategoryContent(categoryKey) {
+      const container = document.getElementById('category-container');
+      const categoryName = configData[categoryKey][currentLang];
+      const apps = appsData[categoryKey] || [];
+
+      let appCardsHTML = '';
+      
+      if (apps.length > 0) {
+        appCardsHTML = apps.map(createAppCard).join('');
+      } else {
+        appCardsHTML = '<div style="text-align: center; color: var(--text-secondary); padding: 40px;">Coming Soon</div>';
+      }
+
+      container.innerHTML = '<div id="' + categoryKey + '" class="category-content active">' +
+        '<div class="category-header">' +
+        '<h2>' + categoryName + '</h2>' +
+        '</div>' +
+        '<div class="app-grid">' +
+        appCardsHTML +
+        '</div>' +
+        '</div>';
+    }
+
+    function switchCategory(categoryId) {
+      currentCategory = categoryId;
+      renderCategoryTabs();
+      renderCategoryContent(categoryId);
+    }
+
+    function showFullDesc(title, desc) {
+      const modal = document.getElementById('desc-modal');
+      const modalTitle = document.getElementById('modal-title');
+      const modalDesc = document.getElementById('modal-desc');
+      
+      modalTitle.textContent = title;
+      modalDesc.textContent = desc;
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('desc-modal').classList.remove('active');
+    }
+
+    document.addEventListener('click', function(e) {
+      if (e.target.id === 'desc-modal') {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    function changeLanguage(lang) {
+      currentLang = lang;
+      
+      if (currentLang === 'en') {
+        document.documentElement.lang = 'en';
+        document.title = 'ClickFuture App Studio - Practical Tools, Made with Care';
+        document.getElementById('hero-title').textContent = 'Creating Better Apps';
+        document.getElementById('hero-desc').textContent = 'Explore our carefully crafted practical tools, from document processing to visual creation, empowering every detail of your life.';
+      } else {
+        document.documentElement.lang = 'zh-CN';
+        document.title = 'ClickFuture App Studio - 实用工具，从心出发';
+        document.getElementById('hero-title').textContent = '创造触手可及的便利';
+        document.getElementById('hero-desc').textContent = '探索我们精心打造的实用工具，从文档处理到影像创作，为您生活的每一个细节赋能。';
+      }
+
+      renderCategoryTabs();
+      renderCategoryContent(currentCategory);
+    }
+
+    function init() {
+      renderCategoryTabs();
+      renderCategoryContent(currentCategory);
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+
+</body>
+
+</html>
