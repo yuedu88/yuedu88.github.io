@@ -1,645 +1,1618 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ClickFuture App Studio - Practical Tools, Made with Care</title>
+  <title>ReadingUp | Smart EPUB, PDF &amp; TXT Reader for iPhone, iPad and Mac</title>
+  <meta name="description" content="ReadingUp is a clean reading app for EPUB, TXT, MOBI, HTML, Word and PDF. Highlight ideas, write notes, sync with iCloud, OneDrive and Google Drive, and download ReadingUp on the App Store.">
+  <meta name="keywords" content="ReadingUp, ebook reader app, EPUB reader, PDF reader, TXT reader, iPhone reading app, iPad reading app, Mac reading app, notes, highlights, iCloud sync, OneDrive sync, Google Drive sync">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#0f1726">
+  <meta name="apple-itunes-app" content="app-id=6757276895">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ReadingUp | Smart EPUB, PDF &amp; TXT Reader">
+  <meta property="og:description" content="A focused reading app for iPhone, iPad, and Mac with multi-format support, notes, highlights, iCloud, OneDrive and Google Drive sync, and a clean reading experience.">
+  <meta property="og:image" content="image1.png">
+  <meta property="og:url" content="https://easyregress.online/">
+  <meta property="og:site_name" content="ReadingUp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ReadingUp | Smart EPUB, PDF &amp; TXT Reader">
+  <meta name="twitter:description" content="Import ebooks and documents, keep your notes organized, and stay focused with ReadingUp.">
+  <meta name="twitter:image" content="image1.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Noto+Sans+SC:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "ReadingUp",
+      "applicationCategory": "BooksApplication",
+      "operatingSystem": "iOS 17.6 or later, iPadOS 17.6 or later, macOS 14.6 or later",
+      "softwareVersion": "1.1.21",
+      "description": "ReadingUp is an ebook and document reader for iPhone, iPad, and Mac. It supports EPUB, TXT, MOBI, HTML, Word, and PDF, with notes, highlights, exports, and sync across iCloud, OneDrive, and Google Drive.",
+      "downloadUrl": "https://apps.apple.com/us/app/readingup/id6757276895",
+      "url": "https://easyregress.online/",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://apps.apple.com/us/app/readingup/id6757276895"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ClickFuture Tech"
+      },
+      "featureList": [
+        "Supports EPUB, TXT, MOBI, HTML, Word, and PDF",
+        "Highlights, notes, bookmarks, and reading statistics",
+        "Sync across iCloud, OneDrive, and Google Drive",
+        "Export notes to PDF, TXT, and Markdown",
+        "Custom fonts, themes, and layout controls",
+        "Privacy-focused reading with no mandatory login"
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What file formats does ReadingUp support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ReadingUp supports EPUB, TXT, MOBI, HTML, Word, and PDF files."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can ReadingUp sync across devices?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. ReadingUp supports sync through iCloud, OneDrive, and Google Drive, so your books, highlights, notes, and reading progress can stay available across devices."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does ReadingUp require an account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ReadingUp is designed for private reading and does not require a mandatory login to start using the core experience."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I download ReadingUp?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can download ReadingUp from the Apple App Store."
+          }
+        }
+      ]
+    }
+  </script>
   <style>
     :root {
-      --primary-color: #007AFF;
-      --bg-color: #F5F5F7;
-      --card-bg: #FFFFFF;
-      --text-main: #1D1D1F;
-      --text-secondary: #86868B;
-      --radius-l: 20px;
-      --radius-m: 12px;
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --bg: #f5efe5;
+      --surface: rgba(255, 250, 243, 0.82);
+      --surface-strong: rgba(255, 255, 255, 0.96);
+      --ink: #142033;
+      --muted: #526077;
+      --line: rgba(20, 32, 51, 0.1);
+      --brand: #de6b2d;
+      --brand-strong: #c55218;
+      --accent: #1e6f64;
+      --accent-soft: rgba(30, 111, 100, 0.14);
+      --gold: #f1c87d;
+      --shadow: 0 24px 64px rgba(20, 32, 51, 0.14);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-main);
       margin: 0;
-      padding: 0;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
+      background:
+        radial-gradient(circle at top left, rgba(241, 200, 125, 0.35), transparent 28rem),
+        radial-gradient(circle at top right, rgba(30, 111, 100, 0.14), transparent 30rem),
+        linear-gradient(180deg, #fbf6ee 0%, #f3ebde 48%, #fbf7f1 100%);
+      color: var(--ink);
+      font-family: "Manrope", "Noto Sans SC", sans-serif;
+      line-height: 1.65;
+      min-height: 100vh;
     }
 
-    header {
-      background-color: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    body[data-lang="en"] .copy-zh,
+    body[data-lang="zh"] .copy-en {
+      display: none !important;
     }
 
-    .nav-container {
-      max-width: 1000px;
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+    }
+
+    .skip-link:focus {
+      left: 16px;
+      top: 16px;
+      z-index: 30;
+      background: #fff;
+      color: var(--ink);
+      padding: 10px 14px;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+    }
+
+    .page-shell {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-shell::before,
+    .page-shell::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(10px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .page-shell::before {
+      width: 32rem;
+      height: 32rem;
+      top: 4rem;
+      right: -12rem;
+      background: rgba(222, 107, 45, 0.12);
+    }
+
+    .page-shell::after {
+      width: 26rem;
+      height: 26rem;
+      top: 40rem;
+      left: -8rem;
+      background: rgba(30, 111, 100, 0.1);
+    }
+
+    .site-header,
+    .site-footer,
+    main section {
+      position: relative;
+      z-index: 1;
+    }
+
+    .site-header {
+      width: min(calc(100% - 32px), var(--max));
       margin: 0 auto;
-      padding: 0 20px;
-      height: 60px;
+      padding: 22px 0 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 20px;
     }
 
-    .logo {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--text-main);
-      text-decoration: none;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-family: "Fraunces", serif;
+      font-size: 1.3rem;
+      background: linear-gradient(135deg, var(--brand), #ef9f59);
+      box-shadow: 0 12px 28px rgba(222, 107, 45, 0.25);
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-size: 1.1rem;
+    }
+
+    .brand-tag {
+      font-size: 0.83rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .header-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
-    .logo span {
-      background: linear-gradient(135deg, #007AFF, #00C6FF);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(16px);
     }
 
     .nav-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 0.9rem;
-      transition: color 0.2s;
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition: background-color 0.2s ease, color 0.2s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--primary-color);
-    }
-
-    .hero {
-      text-align: center;
-      padding: 80px 20px 60px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 15px;
-      letter-spacing: -0.02em;
-    }
-
-    .hero p {
-      font-size: 1.3rem;
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .main-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 20px;
-      padding-bottom: 80px;
-    }
-
-    .category-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 40px 0;
-      flex-wrap: wrap;
-    }
-
-    .tab-button {
-      padding: 12px 30px;
-      border: 2px solid #E5E5EA;
-      background-color: white;
-      color: var(--text-secondary);
-      border-radius: 25px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: rgba(20, 32, 51, 0.06);
+      color: var(--ink);
       outline: none;
     }
 
-    .tab-button:hover {
-      border-color: var(--primary-color);
-      color: var(--primary-color);
+    .lang-switch {
+      display: inline-flex;
+      padding: 5px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
     }
 
-    .tab-button.active {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-      color: white;
-      box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+    .lang-switch button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      padding: 9px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 800;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
     }
 
-    .category-content {
-      display: none;
-      animation: fadeIn 0.4s ease;
+    .lang-switch button[aria-pressed="true"] {
+      background: var(--ink);
+      color: #fff;
+      transform: translateY(-1px);
     }
 
-    .category-content.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .category-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .category-header h2 {
-      font-size: 2rem;
-      margin: 0 0 10px 0;
-      font-weight: 700;
-    }
-
-    .app-grid {
+    .hero {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      padding: 44px 0 40px;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 32px;
+      align-items: stretch;
     }
 
-    @media (max-width: 768px) {
-      .app-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .app-card {
-      background: var(--card-bg);
-      border-radius: var(--radius-l);
-      padding: 24px;
+    .hero-copy,
+    .hero-panel,
+    .feature-card,
+    .proof-card,
+    .screenshot-card,
+    .seo-card,
+    .faq-item,
+    .cta-panel {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      backdrop-filter: blur(22px);
       box-shadow: var(--shadow);
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(0, 0, 0, 0.02);
-      min-height: 500px;
     }
 
-    .app-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    .hero-copy {
+      padding: clamp(28px, 4vw, 46px);
+      border-radius: var(--radius-xl);
     }
 
-    .app-header {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
-
-    .app-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 18px;
-      background-color: #f0f0f0;
-      object-fit: cover;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    .app-info {
-      margin-left: 18px;
-      flex: 1;
-    }
-
-    .app-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin: 0 0 6px 0;
-      color: var(--text-main);
-    }
-
-    .app-subtitle {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-    }
-
-    .app-desc {
-      font-size: 0.95rem;
-      color: #555;
-      flex: 1;
-      margin-bottom: 20px;
-      cursor: pointer;
-      display: -webkit-box;
-      -webkit-line-clamp: 5;
-      line-clamp: 5;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      line-height: 1.7;
-    }
-
-    .app-desc-hint {
-      font-size: 0.8rem;
-      color: var(--primary-color);
-      margin-top: 8px;
-      font-weight: 500;
-    }
-
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      display: none;
-      justify-content: center;
+    .eyebrow {
+      display: inline-flex;
       align-items: center;
-      z-index: 1000;
-      padding: 20px;
-    }
-
-    .modal-overlay.active {
-      display: flex;
-    }
-
-    .modal-content {
-      background: white;
-      border-radius: var(--radius-l);
-      max-width: 600px;
-      max-height: 80vh;
-      overflow-y: auto;
-      padding: 30px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-      position: relative;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: #f0f0f0;
-      border: none;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #666;
-      transition: all 0.2s;
-    }
-
-    .modal-close:hover {
-      background: #e0e0e0;
-      color: #333;
-    }
-
-    .modal-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin: 0 0 20px 0;
-      color: var(--text-main);
-    }
-
-    .modal-desc {
-      line-height: 1.8;
-      color: #555;
-      white-space: pre-wrap;
-    }
-
-    .app-screenshots {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .screenshot {
-      width: 100%;
-      height: 280px;
-      border-radius: 12px;
-      background-color: #eee;
-      object-fit: contain;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease;
-    }
-
-    .screenshot:hover {
-      transform: scale(1.02);
-    }
-
-    .app-actions {
-      display: flex;
       gap: 10px;
-      margin-top: auto;
+      margin: 0 0 20px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(30, 111, 100, 0.12);
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
     }
 
-    .btn {
-      flex: 1;
+    .hero h1 {
+      margin: 0;
+      font-family: "Fraunces", "Noto Sans SC", serif;
+      font-size: clamp(2.7rem, 6vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      max-width: 10ch;
+    }
+
+    .hero-intro {
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 64ch;
+    }
+
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px;
-      border-radius: var(--radius-m);
+      gap: 10px;
+      min-height: 54px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(20, 32, 51, 0.16);
+      outline: none;
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+      color: #fff;
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.76);
+      color: var(--ink);
+      border-color: var(--line);
+    }
+
+    .hero-points {
+      list-style: none;
+      margin: 26px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .hero-points li::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      margin-top: 8px;
+      border-radius: 999px;
+      flex: 0 0 auto;
+      background: linear-gradient(135deg, var(--brand), var(--gold));
+      box-shadow: 0 0 0 6px rgba(222, 107, 45, 0.1);
+    }
+
+    .chip-row {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(20, 32, 51, 0.08);
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    .hero-panel {
+      padding: 22px;
+      border-radius: var(--radius-xl);
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .panel-card {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      background: var(--surface-strong);
+      border: 1px solid rgba(20, 32, 51, 0.08);
+    }
+
+    .panel-kicker {
+      margin: 0;
+      color: var(--muted);
       font-size: 0.9rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .panel-title {
+      margin: 10px 0 8px;
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .panel-text {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stat-box {
+      padding: 18px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, #fffaf3 0%, #f7efe0 100%);
+      border: 1px solid rgba(20, 32, 51, 0.08);
+    }
+
+    .stat-value {
+      display: block;
+      font-family: "Fraunces", serif;
+      font-size: 2rem;
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .stat-label {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .proof {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      padding: 8px 0 36px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .proof-card {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+    }
+
+    .proof-card h2 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+      letter-spacing: -0.03em;
+    }
+
+    .proof-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .section-shell {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      padding: 44px 0;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    .section-label {
+      margin: 0 0 12px;
+      color: var(--brand);
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: "Fraunces", "Noto Sans SC", serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+    }
+
+    .section-head p {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature-card {
+      padding: 24px;
+      border-radius: var(--radius-lg);
+    }
+
+    .feature-index {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      background: rgba(30, 111, 100, 0.12);
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .feature-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+      letter-spacing: -0.03em;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .screenshot-card {
+      padding: 16px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    .shot-frame {
+      overflow: hidden;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #dfe8f2 0%, #f6f0e6 100%);
+      aspect-ratio: 9 / 16;
+      border: 1px solid rgba(20, 32, 51, 0.08);
+    }
+
+    .shot-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .shot-frame img.is-fallback {
+      object-fit: contain;
+      padding: 24px;
+      background: linear-gradient(180deg, #f7efe2 0%, #edf3f8 100%);
+    }
+
+    .screenshot-card figcaption {
+      padding: 14px 6px 4px;
+    }
+
+    .screenshot-card strong {
+      display: block;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .screenshot-card span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .seo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .seo-card {
+      padding: 24px;
+      border-radius: var(--radius-lg);
+    }
+
+    .seo-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.16rem;
+      letter-spacing: -0.03em;
+    }
+
+    .seo-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .faq-item {
+      padding: 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      list-style: none;
       cursor: pointer;
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      font-weight: 800;
+      font-size: 1rem;
     }
 
-    .btn-primary {
-      background-color: var(--primary-color);
-      color: white;
+    .faq-item summary::-webkit-details-marker {
+      display: none;
     }
 
-    .btn-primary:hover {
-      background-color: #0066d6;
+    .faq-item summary::after {
+      content: "+";
+      font-size: 1.35rem;
+      color: var(--brand);
+      flex: 0 0 auto;
     }
 
-    .footer {
-      background-color: #fff;
-      padding: 60px 20px;
-      text-align: center;
-      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    .faq-item[open] summary::after {
+      content: "−";
+    }
+
+    .faq-answer {
+      padding: 0 24px 22px;
+      color: var(--muted);
+    }
+
+    .faq-answer p {
+      margin: 0;
+    }
+
+    .cta-panel {
+      padding: clamp(28px, 5vw, 44px);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at top right, rgba(241, 200, 125, 0.34), transparent 16rem),
+        linear-gradient(135deg, rgba(20, 32, 51, 0.96), rgba(31, 44, 68, 0.95));
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .cta-panel h2 {
+      margin: 0;
+      font-family: "Fraunces", "Noto Sans SC", serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.04;
+      letter-spacing: -0.05em;
+      max-width: 10ch;
+    }
+
+    .cta-panel p {
+      max-width: 56ch;
+      margin: 14px 0 0;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .cta-actions {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .contact-card {
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      backdrop-filter: blur(22px);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-kicker {
+      margin: 0 0 10px;
+      color: var(--brand);
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .contact-card h3 {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+
+    .contact-card p {
+      margin: 12px 0 0;
+      color: var(--muted);
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .contact-link:hover,
+    .contact-link:focus-visible {
+      color: var(--brand);
+      outline: none;
+    }
+
+    .site-footer {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      padding: 30px 0 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.94rem;
     }
 
     .footer-links {
       display: flex;
-      justify-content: center;
-      gap: 20px;
+      align-items: center;
+      gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 20px;
     }
 
     .footer-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.9rem;
+      color: var(--ink);
+      font-weight: 700;
     }
 
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
-
-    .copyright {
-      color: #999;
-      font-size: 0.8rem;
-    }
-
-    .lang-select {
-      padding: 6px 16px;
-      font-size: 0.85rem;
-      border: 2px solid #E5E5EA;
-      border-radius: 20px;
-      background-color: white;
-      color: var(--text-secondary);
-      cursor: pointer;
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--brand);
       outline: none;
-      transition: all 0.2s;
     }
 
-    .lang-select:hover {
-      border-color: var(--primary-color);
-      color: var(--primary-color);
+    @media (max-width: 1040px) {
+      .hero,
+      .proof,
+      .feature-grid,
+      .seo-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .screenshot-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .site-header {
+        padding-top: 18px;
+      }
+
+      .header-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .nav-links a {
+        flex: 1 1 auto;
+        text-align: center;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero h1 {
+        max-width: none;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .screenshot-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-shell {
+        padding: 36px 0;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .site-header,
+      .hero,
+      .proof,
+      .section-shell,
+      .site-footer {
+        width: min(calc(100% - 24px), var(--max));
+      }
+
+      .hero-copy,
+      .hero-panel,
+      .feature-card,
+      .proof-card,
+      .screenshot-card,
+      .seo-card,
+      .faq-item,
+      .cta-panel {
+        border-radius: 24px;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .lang-switch {
+        margin-left: auto;
+      }
     }
   </style>
 </head>
-
-<body>
-
-  <header>
-    <div class="nav-container">
-      <a href="#" class="logo">
-        <span>ClickFuture</span> | App Studio
+<body data-lang="en">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="ReadingUp homepage">
+        <span class="brand-mark">RU</span>
+        <span class="brand-copy">
+          <span class="brand-name">ReadingUp</span>
+          <span class="brand-tag">
+            <span class="copy-en">Read More, Grow More</span>
+            <span class="copy-zh">读得更多，成长更多</span>
+          </span>
+        </span>
       </a>
-      <nav class="nav-links">
-        <select id="lang-select" class="lang-select" onchange="changeLanguage(this.value)">
-          <option value="en">English</option>
-          <option value="cn">中文</option>
-        </select>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+      <div class="header-actions">
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#features">
+            <span class="copy-en">Features</span>
+            <span class="copy-zh">功能</span>
+          </a>
+          <a href="#screenshots">
+            <span class="copy-en">Screenshots</span>
+            <span class="copy-zh">截图</span>
+          </a>
+          <a href="#faq">
+            <span class="copy-en">FAQ</span>
+            <span class="copy-zh">常见问题</span>
+          </a>
+          <a href="#contact">
+            <span class="copy-en">Contact</span>
+            <span class="copy-zh">联系</span>
+          </a>
+        </nav>
+        <div class="lang-switch" role="group" aria-label="Language switch">
+          <button type="button" data-lang-button="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang-button="zh" aria-pressed="false">中文</button>
+        </div>
+      </div>
+    </header>
 
-  <div class="hero">
-    <h1 id="hero-title">Creating Better Apps</h1>
-    <p id="hero-desc">Explore our carefully crafted practical tools, from document processing to visual creation, empowering every detail of your life.</p>
-  </div>
+    <main id="main-content">
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="copy-en">Now on the App Store</span>
+            <span class="copy-zh">现已上架 App Store</span>
+          </p>
+          <h1>
+            <span class="copy-en">Focused reading, notes, and insight in one elegant app.</span>
+            <span class="copy-zh">把专注阅读、随手笔记和灵感整理，放进一个更优雅的 App。</span>
+          </h1>
+          <div class="hero-intro">
+            <p class="copy-en">ReadingUp is a modern ebook and document reader for iPhone, iPad, and Mac. Import EPUB, TXT, MOBI, HTML, Word, and PDF files, customize the reading view, capture highlights and notes, and keep everything in sync with iCloud, OneDrive, and Google Drive.</p>
+            <p class="copy-zh">ReadingUp 是一款面向 iPhone、iPad 和 Mac 的现代阅读应用。你可以导入 EPUB、TXT、MOBI、HTML、Word 和 PDF 文件，自定义阅读界面，记录划线和笔记，并通过 iCloud、OneDrive 和 Google Drive 在不同设备间保持同步。</p>
+          </div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://apps.apple.com/us/app/readingup/id6757276895" target="_blank" rel="noopener noreferrer">
+              <span class="copy-en">Download on the App Store</span>
+              <span class="copy-zh">前往 App Store 下载</span>
+            </a>
+            <a class="button button-secondary" href="#screenshots">
+              <span class="copy-en">View Screenshots</span>
+              <span class="copy-zh">查看应用截图</span>
+            </a>
+          </div>
+          <ul class="hero-points">
+            <li>
+              <span class="copy-en">Support for EPUB, TXT, MOBI, HTML, Word, and PDF in one reader.</span>
+              <span class="copy-zh">一个阅读器支持 EPUB、TXT、MOBI、HTML、Word 和 PDF。</span>
+            </li>
+            <li>
+              <span class="copy-en">Highlights, bookmarks, notes, and exports to keep your reading useful.</span>
+              <span class="copy-zh">划线、书签、笔记和导出能力，让阅读内容真正沉淀下来。</span>
+            </li>
+            <li>
+              <span class="copy-en">Cloud sync with iCloud, OneDrive, and Google Drive, without forcing a login wall first.</span>
+              <span class="copy-zh">支持 iCloud、OneDrive 和 Google Drive 云同步，同时不强制你先被登录墙拦住。</span>
+            </li>
+          </ul>
+          <div class="chip-row" aria-label="Key benefits">
+            <span class="chip">EPUB / TXT / MOBI / HTML / WORD / PDF</span>
+            <span class="chip">
+              <span class="copy-en">iCloud / OneDrive / Google Drive</span>
+              <span class="copy-zh">iCloud / OneDrive / Google Drive</span>
+            </span>
+            <span class="chip">
+              <span class="copy-en">No Mandatory Login</span>
+              <span class="copy-zh">无需强制登录</span>
+            </span>
+            <span class="chip">
+              <span class="copy-en">Notes Export</span>
+              <span class="copy-zh">笔记导出</span>
+            </span>
+          </div>
+        </div>
 
-  <div class="main-container">
-    <div class="category-tabs" id="category-tabs">
-    </div>
+        <aside class="hero-panel" aria-label="App facts">
+          <div class="panel-card">
+            <p class="panel-kicker">
+              <span class="copy-en">Why users come here</span>
+              <span class="copy-zh">为什么值得打开</span>
+            </p>
+            <h2 class="panel-title">
+              <span class="copy-en">ReadingUp turns scattered reading into a calmer workflow.</span>
+              <span class="copy-zh">ReadingUp 把零散阅读，整理成更安静顺手的工作流。</span>
+            </h2>
+            <p class="panel-text copy-en">Read long-form content with better typography, mark important passages, collect notes, and continue on another device through iCloud, OneDrive, or Google Drive without losing momentum.</p>
+            <p class="panel-text copy-zh">你可以用更舒服的排版去读长内容，标记重要段落，整理笔记，并通过 iCloud、OneDrive 或 Google Drive 换一台设备继续，不中断阅读节奏。</p>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-box">
+              <span class="stat-value">6</span>
+              <span class="stat-label">
+                <span class="copy-en">file formats supported</span>
+                <span class="copy-zh">种主流文件格式</span>
+              </span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value">3</span>
+              <span class="stat-label">
+                <span class="copy-en">Apple platforms covered</span>
+                <span class="copy-zh">个苹果平台支持</span>
+              </span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value">3</span>
+              <span class="stat-label">
+                <span class="copy-en">cloud sync options</span>
+                <span class="copy-zh">种云同步方式</span>
+              </span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value">PDF</span>
+              <span class="stat-label">
+                <span class="copy-en">TXT and Markdown exports</span>
+                <span class="copy-zh">TXT 与 Markdown 导出</span>
+              </span>
+            </div>
+          </div>
+          <div class="panel-card">
+            <p class="panel-kicker">
+              <span class="copy-en">Designed for focused readers</span>
+              <span class="copy-zh">为认真阅读的人设计</span>
+            </p>
+            <p class="panel-text copy-en">Whether you read novels, study material, research papers, or saved documents, ReadingUp helps you keep a cleaner library and a more consistent reading habit.</p>
+            <p class="panel-text copy-zh">无论你读小说、学习资料、研究文档还是收藏文章，ReadingUp 都能帮你把书库整理得更清楚，让阅读习惯更稳定。</p>
+          </div>
+        </aside>
+      </section>
 
-    <div id="category-container">
-    </div>
-  </div>
+      <section class="proof" aria-label="Highlights">
+        <article class="proof-card">
+          <h2>
+            <span class="copy-en">Built for books and documents</span>
+            <span class="copy-zh">同时适合电子书和文档</span>
+          </h2>
+          <p class="copy-en">ReadingUp works as an EPUB reader, PDF reader, TXT reader, and document viewer, so one app can cover personal reading, study, and work references.</p>
+          <p class="copy-zh">ReadingUp 既是 EPUB 阅读器，也是 PDF、TXT 和文档阅读器，一款 App 覆盖日常阅读、学习和工作参考。</p>
+        </article>
+        <article class="proof-card">
+          <h2>
+            <span class="copy-en">Clean design, less friction</span>
+            <span class="copy-zh">界面干净，阅读阻力更低</span>
+          </h2>
+          <p class="copy-en">Use fonts, spacing, themes, and background styles that fit long reading sessions, without clutter getting between you and the text.</p>
+          <p class="copy-zh">你可以按自己的习惯调整字体、间距、主题和背景，在更少干扰里完成更长时间的阅读。</p>
+        </article>
+        <article class="proof-card">
+          <h2>
+            <span class="copy-en">Useful after you finish reading</span>
+            <span class="copy-zh">读完之后仍然有价值</span>
+          </h2>
+          <p class="copy-en">Highlights and notes are not trapped inside the app. Export them when you need to review, archive, write, or share.</p>
+          <p class="copy-zh">划线和笔记不会被困在应用里，你可以在需要复习、归档、写作或分享时导出它们。</p>
+        </article>
+      </section>
 
-  <footer id="contact" class="footer">
-    <div class="footer-links">
-      <a href="https://docs.qq.com/doc/DREt1SXJkbG9JYUFT" target="_blank">Privacy Policy</a>
-      <a href="https://docs.qq.com/doc/DREdKR2ZwYUJaa1hr" target="_blank">Terms of Use</a>
-      <a href="mailto:hxx_shdt@126.com">Contact Support</a>
-    </div>
-    <div class="copyright">
-      &copy; 2024 ClickFuture Studio. All rights reserved. <br>
-      ICP License: 沪ICP备2024069469号-5
-    </div>
-  </footer>
+      <section class="section-shell" id="features">
+        <div class="section-head">
+          <p class="section-label">
+            <span class="copy-en">Features</span>
+            <span class="copy-zh">核心功能</span>
+          </p>
+          <h2>
+            <span class="copy-en">A reading app that respects both your content and your attention.</span>
+            <span class="copy-zh">尊重内容，也尊重注意力的阅读应用。</span>
+          </h2>
+          <p class="copy-en">This page is built to help Google understand what ReadingUp offers: an ebook and document reader with multi-format support, annotation tools, export options, sync across iCloud, OneDrive, and Google Drive, and a privacy-focused Apple platform experience.</p>
+          <p class="copy-zh">这个页面也在明确告诉 Google：ReadingUp 是一款支持多格式、带批注与导出、支持 iCloud、OneDrive 和 Google Drive 同步、并且重视隐私体验的苹果平台阅读应用。</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-index">01</div>
+            <h3>
+              <span class="copy-en">Read the files you already have</span>
+              <span class="copy-zh">直接阅读你已有的文件</span>
+            </h3>
+            <p class="copy-en">Import EPUB, TXT, MOBI, HTML, Word, and PDF files without turning your library into a format conversion project.</p>
+            <p class="copy-zh">直接导入 EPUB、TXT、MOBI、HTML、Word 和 PDF，不需要再为格式转换额外折腾。</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-index">02</div>
+            <h3>
+              <span class="copy-en">Highlight, bookmark, and annotate</span>
+              <span class="copy-zh">划线、书签、批注一气呵成</span>
+            </h3>
+            <p class="copy-en">Mark key passages, add notes in context, and return later with a cleaner memory of what mattered.</p>
+            <p class="copy-zh">给重点内容划线，顺手写下想法，之后回看时更容易重新进入上下文。</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-index">03</div>
+            <h3>
+              <span class="copy-en">Sync with iCloud, OneDrive, and Google Drive</span>
+              <span class="copy-zh">通过 iCloud、OneDrive 和 Google Drive 同步</span>
+            </h3>
+            <p class="copy-en">Keep books, notes, highlights, bookmarks, and reading progress aligned across iPhone, iPad, and Mac with flexible cloud file sync options.</p>
+            <p class="copy-zh">通过更灵活的云文件同步方式，让书籍、笔记、划线、书签和阅读进度在 iPhone、iPad 与 Mac 之间保持一致。</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-index">04</div>
+            <h3>
+              <span class="copy-en">Customize the reading view</span>
+              <span class="copy-zh">自定义你的阅读视图</span>
+            </h3>
+            <p class="copy-en">Adjust fonts, margins, brightness, line spacing, paragraph spacing, and backgrounds for a more comfortable reading session.</p>
+            <p class="copy-zh">可以调整字体、边距、亮度、行距、段距和背景，让长时间阅读更舒服。</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-index">05</div>
+            <h3>
+              <span class="copy-en">Export useful notes</span>
+              <span class="copy-zh">把有价值的笔记导出来</span>
+            </h3>
+            <p class="copy-en">Export notes and highlights to PDF, TXT, or Markdown when you need study material, writing references, or permanent archives.</p>
+            <p class="copy-zh">需要复习资料、写作参考或长期存档时，可以把笔记和划线导出为 PDF、TXT 或 Markdown。</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-index">06</div>
+            <h3>
+              <span class="copy-en">Keep reading private</span>
+              <span class="copy-zh">把阅读留给你自己</span>
+            </h3>
+            <p class="copy-en">ReadingUp is designed around private reading, simple workflows, and less friction, instead of forcing an account before you can begin.</p>
+            <p class="copy-zh">ReadingUp 的设计重点是私密阅读、简单流程和更少打扰，而不是在开始前先逼你注册账号。</p>
+          </article>
+        </div>
+      </section>
 
-  <div id="desc-modal" class="modal-overlay">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal()">×</button>
-      <h2 class="modal-title" id="modal-title"></h2>
-      <div class="modal-desc" id="modal-desc"></div>
-    </div>
+      <section class="section-shell" id="screenshots">
+        <div class="section-head">
+          <p class="section-label">
+            <span class="copy-en">Screenshots</span>
+            <span class="copy-zh">界面截图</span>
+          </p>
+          <h2>
+            <span class="copy-en">Eight product views that show how ReadingUp feels in use.</span>
+            <span class="copy-zh">八张产品截图，直接展示 ReadingUp 的实际使用感受。</span>
+          </h2>
+          <p class="copy-en">These screenshots now describe the actual interface shown in each image, including the bookshelf, import flows, reading settings, and reading stats. Place `image1.png` to `image8.png` beside this file.</p>
+          <p class="copy-zh">这里的每张截图说明都已经对应实际界面内容，包括书架、导入流程、阅读设置和阅读统计。把 `image1.png` 到 `image8.png` 放在和本文件同级目录即可。</p>
+        </div>
+        <div class="screenshot-grid">
+          <figure class="screenshot-card">
+            <div class="shot-frame">
+              <img src="image1.png" alt="ReadingUp bookshelf home screen" loading="lazy" data-fallback-en="Bookshelf Home" data-fallback-zh="书架首页">
+            </div>
+            <figcaption>
+              <strong>
+                <span class="copy-en">Bookshelf home screen</span>
+                <span class="copy-zh">书架首页</span>
+              </strong>
+              <span>
+                <span class="copy-en">The main bookshelf shows imported titles, search, and bottom navigation for Bookshelf, Highlights, Reading Stats, and Settings.</span>
+                <span class="copy-zh">主书架页面展示已导入书籍、搜索框，以及 Bookshelf、Highlights、Reading Stats 和 Settings 底部导航。</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="screenshot-card">
+            <div class="shot-frame">
+              <img src="image2.png" alt="ReadingUp book action menu" loading="lazy" data-fallback-en="Book Actions" data-fallback-zh="书籍操作菜单">
+            </div>
+            <figcaption>
+              <strong>
+                <span class="copy-en">Book action menu</span>
+                <span class="copy-zh">书籍操作菜单</span>
+              </strong>
+              <span>
+                <span class="copy-en">Long-press actions include edit, export, set cover, rename, convert to TXT, set category, add tag, upload to cloud, and more.</span>
+                <span class="copy-zh">长按书籍后可进行编辑、导出、设置封面、重命名、转 TXT、设置分类、添加标签、上传云端等操作。</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="screenshot-card">
+            <div class="shot-frame">
+              <img src="image3.png" alt="ReadingUp text reading page" loading="lazy" data-fallback-en="Reading Page" data-fallback-zh="正文阅读页">
+            </div>
+            <figcaption>
+              <strong>
+                <span class="copy-en">Text reading page</span>
+                <span class="copy-zh">正文阅读页</span>
+              </strong>
+              <span>
+                <span class="copy-en">The clean reading layout keeps the chapter title and body text front and center for long-form reading.</span>
+                <span class="copy-zh">简洁的正文排版让章节标题和文本主体更突出，适合长时间沉浸阅读。</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="screenshot-card">
+            <div class="shot-frame">
+              <img src="image4.png" alt="ReadingUp page mode settings" loading="lazy" data-fallback-en="Page Mode" data-fallback-zh="翻页模式">
+            </div>
+            <figcaption>
+              <strong>
+                <span class="copy-en">Page mode settings</span>
+                <span class="copy-zh">翻页模式设置</span>
+              </strong>
+              <span>
+                <span class="copy-en">Choose between scroll up and down, swipe left and right, or flip effects, and control auto page turning behavior.</span>
+                <span class="copy-zh">可以在上下滚动、左右翻页和翻页效果之间切换，并控制自动翻页方式。</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="screenshot-card">
+            <div class="shot-frame">
+              <img src="image5.png" alt="ReadingUp reading style settings" loading="lazy" data-fallback-en="Reading Style" data-fallback-zh="阅读样式">
+            </div>
+            <figcaption>
+              <strong>
+                <span class="copy-en">Reading style settings</span>
+                <span class="copy-zh">阅读样式设置</span>
+              </strong>
+              <span>
+                <span class="copy-en">Adjust font family, font weight, letter spacing, line spacing, side margins, and paragraph spacing to fit your reading preference.</span>
+                <span class="copy-zh">可以按自己的习惯调整字体、字重、字距、行距、边距和段距，获得更舒服的阅读体验。</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="screenshot-card">
+            <div class="shot-frame">
+              <img src="image6.png" alt="ReadingUp reading statistics dashboard" loading="lazy" data-fallback-en="Reading Stats" data-fallback-zh="阅读统计">
+            </div>
+            <figcaption>
+              <strong>
+                <span class="copy-en">Reading statistics dashboard</span>
+                <span class="copy-zh">阅读统计面板</span>
+              </strong>
+              <span>
+                <span class="copy-en">Track reading time, streaks, active days, completed books, and time spent by book from one dedicated stats screen.</span>
+                <span class="copy-zh">在独立统计页面里查看阅读时长、连续阅读天数、活跃天数、完成书籍数量，以及每本书的阅读时间。</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="screenshot-card">
+            <div class="shot-frame">
+              <img src="image7.png" alt="ReadingUp empty bookshelf import screen" loading="lazy" data-fallback-en="Import Entry" data-fallback-zh="导入入口">
+            </div>
+            <figcaption>
+              <strong>
+                <span class="copy-en">Empty bookshelf and import entry</span>
+                <span class="copy-zh">空书架与导入入口</span>
+              </strong>
+              <span>
+                <span class="copy-en">New users can import books directly from iCloud or download from iCloud, with quick tips for WiFi transfer and cloud storage sync.</span>
+                <span class="copy-zh">新用户可以直接从 iCloud 导入或下载图书，同时看到 WiFi 传输和云存储同步等快速提示。</span>
+              </span>
+            </figcaption>
+          </figure>
+          <figure class="screenshot-card">
+            <div class="shot-frame">
+              <img src="image8.png" alt="ReadingUp import and tools menu" loading="lazy" data-fallback-en="Import Menu" data-fallback-zh="导入与工具菜单">
+            </div>
+            <figcaption>
+              <strong>
+                <span class="copy-en">Import and tools menu</span>
+                <span class="copy-zh">导入与工具菜单</span>
+              </strong>
+              <span>
+                <span class="copy-en">The import menu brings together iCloud, WiFi transfer, cloud storage providers, OPDS, file creation, categories, view modes, and built-in tools.</span>
+                <span class="copy-zh">导入菜单整合了 iCloud、WiFi 传输、云存储服务、OPDS、创建文件、分类管理、列表视图和内置工具。</span>
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section-shell" id="about">
+        <div class="section-head">
+          <p class="section-label">
+            <span class="copy-en">Why ReadingUp</span>
+            <span class="copy-zh">为什么选择 ReadingUp</span>
+          </p>
+          <h2>
+            <span class="copy-en">SEO-friendly content for people searching for an ebook reader app, not just a pretty homepage.</span>
+            <span class="copy-zh">不仅是一个好看的首页，也是一页能被搜索引擎理解的产品介绍。</span>
+          </h2>
+          <p class="copy-en">If someone is searching for a reading app for EPUB, PDF, TXT, or Word files on iPhone, iPad, or Mac, this page now explains exactly where ReadingUp fits and why it is useful.</p>
+          <p class="copy-zh">如果有人在搜索适合 iPhone、iPad 或 Mac 的 EPUB、PDF、TXT 或 Word 阅读应用，这个页面现在会明确说明 ReadingUp 的定位和价值。</p>
+        </div>
+        <div class="seo-grid">
+          <article class="seo-card">
+            <h3>
+              <span class="copy-en">ReadingUp is an ebook reader app for Apple users</span>
+              <span class="copy-zh">ReadingUp 是一款面向苹果用户的阅读 App</span>
+            </h3>
+            <p class="copy-en">ReadingUp combines the roles of an EPUB reader, PDF reader, TXT reader, MOBI reader, and document reading app into one polished experience. Instead of switching between separate tools, users can keep more of their reading in one place.</p>
+            <p class="copy-zh">ReadingUp 把 EPUB 阅读器、PDF 阅读器、TXT 阅读器、MOBI 阅读器和文档阅读器这些角色整合到一个更完整的体验里，不用在多个工具之间来回切换。</p>
+          </article>
+          <article class="seo-card">
+            <h3>
+              <span class="copy-en">ReadingUp is for studying, work, and deep reading</span>
+              <span class="copy-zh">ReadingUp 适合学习、工作和深度阅读</span>
+            </h3>
+            <p class="copy-en">Whether the user is reading books, saved articles, class materials, business files, or personal archives, ReadingUp offers annotation tools, exports, and cloud sync that make the content easier to keep, review, and act on.</p>
+            <p class="copy-zh">无论用户在读书籍、收藏文章、课程资料、工作文档还是个人存档，ReadingUp 的批注、导出和云同步能力都能帮助内容更好地留存、复习和再利用。</p>
+          </article>
+          <article class="seo-card">
+            <h3>
+              <span class="copy-en">ReadingUp favors clarity over distraction</span>
+              <span class="copy-zh">ReadingUp 重视清晰，而不是干扰</span>
+            </h3>
+            <p class="copy-en">The product message is simple: read more, grow more. That means cleaner layout, customizable reading settings, cloud continuity through iCloud, OneDrive, and Google Drive, and a reading workflow that helps users stay with the text instead of fighting the interface.</p>
+            <p class="copy-zh">产品表达很直接：读得更多，成长更多。这意味着更干净的界面、更可控的阅读设置，以及通过 iCloud、OneDrive 和 Google Drive 保持连续体验，让用户更专注于内容而不是界面。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-shell" id="faq">
+        <div class="section-head">
+          <p class="section-label">
+            <span class="copy-en">FAQ</span>
+            <span class="copy-zh">常见问题</span>
+          </p>
+          <h2>
+            <span class="copy-en">Answers that help users decide quickly.</span>
+            <span class="copy-zh">用更直接的答案，帮助用户快速决定是否下载。</span>
+          </h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>
+              <span class="copy-en">What formats does ReadingUp support?</span>
+              <span class="copy-zh">ReadingUp 支持哪些文件格式？</span>
+            </summary>
+            <div class="faq-answer">
+              <p class="copy-en">ReadingUp supports EPUB, TXT, MOBI, HTML, Word, and PDF. It is designed for users who read both books and practical documents on Apple devices.</p>
+              <p class="copy-zh">ReadingUp 支持 EPUB、TXT、MOBI、HTML、Word 和 PDF，适合在苹果设备上同时阅读电子书与实际工作文档的用户。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span class="copy-en">Can ReadingUp sync my books and notes?</span>
+              <span class="copy-zh">ReadingUp 可以同步我的书籍和笔记吗？</span>
+            </summary>
+            <div class="faq-answer">
+              <p class="copy-en">Yes. ReadingUp supports iCloud, OneDrive, and Google Drive sync, which helps keep your books, highlights, bookmarks, notes, and reading progress aligned across supported devices.</p>
+              <p class="copy-zh">可以。ReadingUp 支持 iCloud、OneDrive 和 Google Drive 同步，能够在支持的设备之间同步书籍、划线、书签、笔记和阅读进度。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span class="copy-en">Does ReadingUp support OneDrive and Google Drive file sync?</span>
+              <span class="copy-zh">ReadingUp 支持 OneDrive 和 Google Drive 文件同步吗？</span>
+            </summary>
+            <div class="faq-answer">
+              <p class="copy-en">Yes. ReadingUp now highlights support for syncing reading files through OneDrive and Google Drive, alongside iCloud, so users can manage files in the cloud service they already use.</p>
+              <p class="copy-zh">支持。ReadingUp 现在明确支持通过 OneDrive 和 Google Drive 同步阅读文件，并同时兼容 iCloud，让用户按自己已有的云服务习惯管理文件。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span class="copy-en">Is ReadingUp privacy-focused?</span>
+              <span class="copy-zh">ReadingUp 是否重视隐私？</span>
+            </summary>
+            <div class="faq-answer">
+              <p class="copy-en">Yes. ReadingUp is positioned as a private reading experience and does not force users through a mandatory login before they can start reading.</p>
+              <p class="copy-zh">是的。ReadingUp 强调私密阅读体验，不会在你开始阅读前强制要求先登录账号。</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>
+              <span class="copy-en">Where do I download ReadingUp?</span>
+              <span class="copy-zh">我在哪里下载 ReadingUp？</span>
+            </summary>
+            <div class="faq-answer">
+              <p class="copy-en">Use the App Store button on this page to jump directly to the official App Store listing for ReadingUp.</p>
+              <p class="copy-zh">点击本页的 App Store 按钮，就能直接跳转到 ReadingUp 的官方 App Store 页面。</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="section-shell">
+        <div class="cta-panel">
+          <h2>
+            <span class="copy-en">Bring your books, notes, and reading rhythm together with ReadingUp.</span>
+            <span class="copy-zh">用 ReadingUp，把书籍、笔记和阅读节奏收拢到一起。</span>
+          </h2>
+          <p class="copy-en">If you want a cleaner ebook reader and document reader on Apple devices, with notes, exports, cloud sync through iCloud, OneDrive, and Google Drive, and a direct App Store download path, this page is built to make that choice easy.</p>
+          <p class="copy-zh">如果你想要一款更干净的苹果平台阅读应用，支持笔记、导出，以及通过 iCloud、OneDrive 和 Google Drive 进行云同步，并且可以一键跳转 App Store 下载，这个页面就是为转化这一步而写的。</p>
+          <div class="cta-actions">
+            <a class="button button-primary" href="https://apps.apple.com/us/app/readingup/id6757276895" target="_blank" rel="noopener noreferrer">
+              <span class="copy-en">Get ReadingUp</span>
+              <span class="copy-zh">下载 ReadingUp</span>
+            </a>
+            <a class="button button-secondary" href="#top">
+              <span class="copy-en">Back to top</span>
+              <span class="copy-zh">回到顶部</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell" id="contact">
+        <div class="section-head">
+          <p class="section-label">
+            <span class="copy-en">Contact</span>
+            <span class="copy-zh">联系与关注</span>
+          </p>
+          <h2>
+            <span class="copy-en">Contact / Follow us</span>
+            <span class="copy-zh">Contact / Follow us</span>
+          </h2>
+          <p class="copy-en">If you want support, partnership contact, or product updates, use the direct channels below.</p>
+          <p class="copy-zh">如果你想获取支持、商务合作联系或产品更新，可以直接使用下面的渠道。</p>
+        </div>
+        <div class="contact-grid">
+          <article class="contact-card">
+            <p class="contact-kicker">Email</p>
+            <h3>hxx_shdt@126.com</h3>
+            <p class="copy-en">Best for user support, bug reports, privacy questions, and business inquiries.</p>
+            <p class="copy-zh">适合反馈问题、提交 bug、咨询隐私问题，以及商务合作联系。</p>
+            <a class="contact-link" href="mailto:hxx_shdt@126.com">hxx_shdt@126.com</a>
+          </article>
+          <article class="contact-card">
+            <p class="contact-kicker">Follow Us</p>
+            <h3>X / Twitter</h3>
+            <p class="copy-en">Follow product updates, release notes, and new ReadingUp improvements on X.</p>
+            <p class="copy-zh">在 X 上关注产品更新、版本发布信息，以及 ReadingUp 的新改进。</p>
+            <a class="contact-link" href="https://x.com/createeem" target="_blank" rel="noopener noreferrer">https://x.com/createeem</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <span class="copy-en">ReadingUp landing page for App Store promotion and Google SEO.</span>
+        <span class="copy-zh">用于 App Store 推广和 Google SEO 的 ReadingUp 落地页。</span>
+      </div>
+      <div class="footer-links">
+        <a href="readingup_privacy.html">
+          <span class="copy-en">Privacy Policy</span>
+          <span class="copy-zh">隐私政策</span>
+        </a>
+        <a href="readingup_terms.html">
+          <span class="copy-en">Terms</span>
+          <span class="copy-zh">用户协议</span>
+        </a>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">Apple EULA</a>
+        <a href="mailto:hxx_shdt@126.com">
+          <span class="copy-en">Email</span>
+          <span class="copy-zh">联系邮箱</span>
+        </a>
+        <a href="https://x.com/createeem" target="_blank" rel="noopener noreferrer">
+          <span class="copy-en">X / Twitter</span>
+          <span class="copy-zh">X / Twitter</span>
+        </a>
+      </div>
+    </footer>
   </div>
 
   <script>
-    const configData = {
-      "book_reader": {
-        "en": "Reading World",
-        "cn": "阅读成长"
-      },
-      "office_tool": {
-        "en": "Office Tool",
-        "cn": "办公效率"
-      },
-      "audio_creator": {
-        "en": "Audio and Video",
-        "cn": "影像创作"
-      }
-    };
-
-    const appsData = {
-      "office_tool": [],
-      "book_reader": [
-        {
-          "name": "insightreader",
-          "title_en": "Insight Reader",
-          "title_cn": "Insight Reader",
-          "desc_en": "Discover Knowledge, Capture Thoughts - Your Intelligent Reading Companion. Insight Reader is an e-book reader designed for avid readers and learners. We focus on delivering a clean reading experience and powerful note-taking tools, helping you efficiently capture insights and organize your thoughts.",
-          "desc_cn": "发现知识，记录思考 - 你的智能阅读伴侣。Insight Reader 是一款专为爱好阅读与学习的用户设计的电子书阅读器。我们专注于提供纯净的阅读体验和强大的笔记功能，帮助你在海量知识中高效捕捉灵感、整理思考。",
-          "link": "https://apps.apple.com/us/app/insight-reader/id6756795788"
+    (function () {
+      var appStoreUrl = "https://apps.apple.com/us/app/readingup/id6757276895";
+      var metaByLang = {
+        en: {
+          title: "ReadingUp | Smart EPUB, PDF & TXT Reader for iPhone, iPad and Mac",
+          description: "ReadingUp is a clean reading app for EPUB, TXT, MOBI, HTML, Word and PDF. Highlight ideas, write notes, sync with iCloud, OneDrive and Google Drive, and download ReadingUp on the App Store.",
+          ogTitle: "ReadingUp | Smart EPUB, PDF & TXT Reader",
+          ogDescription: "A focused reading app for iPhone, iPad, and Mac with multi-format support, notes, highlights, iCloud, OneDrive and Google Drive sync, and a clean reading experience.",
+          twitterTitle: "ReadingUp | Smart EPUB, PDF & TXT Reader",
+          twitterDescription: "Import ebooks and documents, keep your notes organized, and stay focused with ReadingUp across iCloud, OneDrive, and Google Drive."
         },
-        {
-          "name": "megareader",
-          "title_en": "Mega Reader",
-          "title_cn": "Mega Reader",
-          "desc_en": "A dedicated e-book reader designed for users who seek a pure reading experience. Supports EPUB, TXT, and PDF formats with iCloud sync for seamless cross-device reading.",
-          "desc_cn": "一款专为追求纯粹阅读体验的用户设计的电子书阅读器。支持EPUB、TXT和PDF格式，并通过iCloud同步实现跨设备无缝阅读。",
-          "link": "#"
+        zh: {
+          title: "ReadingUp | 适用于 iPhone、iPad 和 Mac 的多格式阅读应用",
+          description: "ReadingUp 是一款支持 EPUB、TXT、MOBI、HTML、Word 和 PDF 的阅读应用，提供划线、笔记、导出，以及 iCloud、OneDrive 和 Google Drive 同步，并可一键跳转 App Store 下载。",
+          ogTitle: "ReadingUp | 多格式阅读应用",
+          ogDescription: "适用于 iPhone、iPad 和 Mac 的阅读 App，支持多格式导入、划线笔记、iCloud、OneDrive 和 Google Drive 同步，以及更专注的阅读体验。",
+          twitterTitle: "ReadingUp | 多格式阅读应用",
+          twitterDescription: "导入电子书和文档，记录划线与笔记，并通过 iCloud、OneDrive 和 Google Drive 保持同步。"
         }
-      ],
-      "audio_creator": []
-    };
+      };
 
-    let currentLang = 'en';
-    let currentCategory = 'book_reader';
+      var metaSelectors = {
+        description: 'meta[name="description"]',
+        ogTitle: 'meta[property="og:title"]',
+        ogDescription: 'meta[property="og:description"]',
+        twitterTitle: 'meta[name="twitter:title"]',
+        twitterDescription: 'meta[name="twitter:description"]'
+      };
 
-    function renderCategoryTabs() {
-      const tabsContainer = document.getElementById('category-tabs');
-      const categoryKeys = Object.keys(configData);
-      
-      const tabsHTML = categoryKeys.map(function(key) {
-        const isActive = key === currentCategory ? 'active' : '';
-        return '<button class="tab-button ' + isActive + '" onclick="switchCategory(\'' + key + '\')">' + configData[key][currentLang] + '</button>';
-      }).join('');
-      
-      tabsContainer.innerHTML = tabsHTML;
-    }
-
-    function createAppCard(app) {
-      const title = currentLang === 'en' ? app.title_en : app.title_cn;
-      const desc = currentLang === 'en' ? app.desc_en : app.desc_cn;
-      const hintText = currentLang === 'en' ? 'Click to read more' : '点击查看详情';
-      
-      const images = [1, 2].map(function(i) {
-        return '<img src="app/' + currentCategory + '/' + app.name + '/' + currentLang + '/imgage/AppStore' + i + '.png" class="screenshot" alt="Preview ' + i + '" onerror="this.style.display=\'none\'">';
-      }).join('');
-
-      const descLines = desc.split('. ').filter(function(line) { return line.trim(); });
-      const shortDesc = descLines.slice(0, 3).join('. ') + '.';
-      const fullDesc = desc;
-
-      return '<div class="app-card">' +
-        '<div class="app-header">' +
-        '<img src="app/' + currentCategory + '/' + app.name + '/' + currentLang + '/imgage/AppStore1.png" alt="Icon" class="app-icon" onerror="this.src=\'https://placehold.co/72/007AFF/ffffff?text=' + app.name.charAt(0).toUpperCase() + '\'">' +
-        '<div class="app-info">' +
-        '<div class="app-title">' + title + '</div>' +
-        '<div class="app-subtitle">Practical Tool</div>' +
-        '</div>' +
-        '</div>' +
-        '<div class="app-desc" id="desc-' + app.name + '">' +
-        shortDesc +
-        '<div class="app-desc-hint" onclick="showFullDesc(\'' + title.replace(/'/g, "\\'") + '\', \'' + fullDesc.replace(/'/g, "\\'") + '\')" id="hint-' + app.name + '">' + hintText + '</div>' +
-        '</div>' +
-        '<div class="app-screenshots">' +
-        images +
-        '</div>' +
-        '<div class="app-actions">' +
-        '<a href="' + app.link + '" target="_blank" class="btn btn-primary">Download on App Store</a>' +
-        '</div>' +
-        '</div>';
-    }
-
-    function renderCategoryContent(categoryKey) {
-      const container = document.getElementById('category-container');
-      const categoryName = configData[categoryKey][currentLang];
-      const apps = appsData[categoryKey] || [];
-
-      let appCardsHTML = '';
-      
-      if (apps.length > 0) {
-        appCardsHTML = apps.map(createAppCard).join('');
-      } else {
-        appCardsHTML = '<div style="text-align: center; color: var(--text-secondary); padding: 40px;">Coming Soon</div>';
+      function updateMeta(lang) {
+        var content = metaByLang[lang];
+        document.title = content.title;
+        Object.keys(metaSelectors).forEach(function (key) {
+          var element = document.querySelector(metaSelectors[key]);
+          if (element) {
+            element.setAttribute("content", content[key]);
+          }
+        });
       }
 
-      container.innerHTML = '<div id="' + categoryKey + '" class="category-content active">' +
-        '<div class="category-header">' +
-        '<h2>' + categoryName + '</h2>' +
-        '</div>' +
-        '<div class="app-grid">' +
-        appCardsHTML +
-        '</div>' +
-        '</div>';
-    }
-
-    function switchCategory(categoryId) {
-      currentCategory = categoryId;
-      renderCategoryTabs();
-      renderCategoryContent(categoryId);
-    }
-
-    function showFullDesc(title, desc) {
-      const modal = document.getElementById('desc-modal');
-      const modalTitle = document.getElementById('modal-title');
-      const modalDesc = document.getElementById('modal-desc');
-      
-      modalTitle.textContent = title;
-      modalDesc.textContent = desc;
-      modal.classList.add('active');
-    }
-
-    function closeModal() {
-      document.getElementById('desc-modal').classList.remove('active');
-    }
-
-    document.addEventListener('click', function(e) {
-      if (e.target.id === 'desc-modal') {
-        closeModal();
-      }
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeModal();
-      }
-    });
-
-    function changeLanguage(lang) {
-      currentLang = lang;
-      
-      if (currentLang === 'en') {
-        document.documentElement.lang = 'en';
-        document.title = 'ClickFuture App Studio - Practical Tools, Made with Care';
-        document.getElementById('hero-title').textContent = 'Creating Better Apps';
-        document.getElementById('hero-desc').textContent = 'Explore our carefully crafted practical tools, from document processing to visual creation, empowering every detail of your life.';
-      } else {
-        document.documentElement.lang = 'zh-CN';
-        document.title = 'ClickFuture App Studio - 实用工具，从心出发';
-        document.getElementById('hero-title').textContent = '创造触手可及的便利';
-        document.getElementById('hero-desc').textContent = '探索我们精心打造的实用工具，从文档处理到影像创作，为您生活的每一个细节赋能。';
+      function makePlaceholder(label) {
+        var safeLabel = label.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
+          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1600">' +
+          '<defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#f7efe2"/><stop offset="100%" stop-color="#e9f0f7"/></linearGradient></defs>' +
+          '<rect width="900" height="1600" rx="70" fill="url(#g)"/>' +
+          '<rect x="110" y="120" width="680" height="1360" rx="56" fill="#ffffff" stroke="#d6dfeb" stroke-width="8"/>' +
+          '<rect x="160" y="220" width="580" height="52" rx="18" fill="#de6b2d" opacity="0.18"/>' +
+          '<rect x="160" y="340" width="480" height="44" rx="16" fill="#1e6f64" opacity="0.12"/>' +
+          '<rect x="160" y="430" width="560" height="20" rx="10" fill="#dbe5ef"/>' +
+          '<rect x="160" y="480" width="520" height="20" rx="10" fill="#dbe5ef"/>' +
+          '<rect x="160" y="530" width="410" height="20" rx="10" fill="#dbe5ef"/>' +
+          '<rect x="160" y="680" width="580" height="480" rx="32" fill="#f6efe3"/>' +
+          '<rect x="160" y="1210" width="320" height="24" rx="12" fill="#dbe5ef"/>' +
+          '<rect x="160" y="1260" width="420" height="24" rx="12" fill="#dbe5ef"/>' +
+          '<text x="450" y="1455" font-family="Arial, sans-serif" font-size="56" font-weight="700" text-anchor="middle" fill="#1a2c46">' + safeLabel + "</text>" +
+          '<text x="450" y="1525" font-family="Arial, sans-serif" font-size="28" text-anchor="middle" fill="#6b7b91">' + appStoreUrl + "</text>" +
+          "</svg>"
+        );
       }
 
-      renderCategoryTabs();
-      renderCategoryContent(currentCategory);
-    }
+      function refreshFallbacks(lang) {
+        document.querySelectorAll("img[data-placeholder='true']").forEach(function (img) {
+          var label = lang === "zh" ? img.getAttribute("data-fallback-zh") : img.getAttribute("data-fallback-en");
+          img.src = makePlaceholder(label);
+          img.alt = label;
+        });
+      }
 
-    function init() {
-      renderCategoryTabs();
-      renderCategoryContent(currentCategory);
-    }
+      function setLang(lang) {
+        document.body.setAttribute("data-lang", lang);
+        document.documentElement.setAttribute("lang", lang === "zh" ? "zh-CN" : "en");
+        document.querySelectorAll("[data-lang-button]").forEach(function (button) {
+          button.setAttribute("aria-pressed", String(button.getAttribute("data-lang-button") === lang));
+        });
+        updateMeta(lang);
+        refreshFallbacks(lang);
+        try {
+          window.localStorage.setItem("readingup-lang", lang);
+        } catch (error) {
+        }
+      }
 
-    document.addEventListener('DOMContentLoaded', init);
+      document.querySelectorAll("[data-lang-button]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          setLang(button.getAttribute("data-lang-button"));
+        });
+      });
+
+      document.querySelectorAll("img[data-fallback-en]").forEach(function (img) {
+        img.addEventListener("error", function () {
+          var currentLang = document.body.getAttribute("data-lang") || "en";
+          var label = currentLang === "zh" ? img.getAttribute("data-fallback-zh") : img.getAttribute("data-fallback-en");
+          img.setAttribute("data-placeholder", "true");
+          img.classList.add("is-fallback");
+          img.alt = label;
+          img.src = makePlaceholder(label);
+        }, { once: true });
+      });
+
+      var savedLang = "en";
+      try {
+        savedLang = window.localStorage.getItem("readingup-lang") || "en";
+      } catch (error) {
+      }
+      setLang(savedLang === "zh" ? "zh" : "en");
+    }());
   </script>
-
 </body>
-
 </html>
